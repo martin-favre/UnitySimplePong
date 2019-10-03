@@ -1,0 +1,27 @@
+Art
+	Halloween theme (Black/orange)
+	Player imgs (???)
+	Spookier Get Ready To Play
+
+Score improvement
+	Spooky font
+	Movement when score obtained
+
+Main Menu
+	Play
+	Quit
+	Instructions
+	Options (Change player buttons)
+
+Game Menu
+	Open on esc
+	Continue
+	Options (Change player buttons)
+	Quit
+	Instructions
+
+Gameplay
+	Starting side (left, right) of ball should not be random 
+
+Music
+	Spooky tunes

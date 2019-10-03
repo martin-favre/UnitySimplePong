@@ -7,8 +7,11 @@ public class BallController : MonoBehaviour
 {
     [SerializeField]
     private float startingSpeed = 0;
+    [SerializeField]
+    private float rotationalSpeedVariation = 0;
     private Rigidbody2D myRigidbody;
     private Vector3 startPos;
+    private bool started = false;
     private void Awake()
     {
         myRigidbody = Helpers.GetComponentMandatory<Rigidbody2D>(gameObject);
@@ -26,6 +29,24 @@ public class BallController : MonoBehaviour
         myRigidbody.velocity = randDir * startingSpeed;
     }
 
+    private void SetRotationToRandom()
+    {
+        myRigidbody.angularVelocity = UnityEngine.Random.Range(-rotationalSpeedVariation, rotationalSpeedVariation);
+    }
+
+    private void Update()
+    {
+        if(!started)
+        {
+            if(Input.GetKeyDown(KeyCode.Return))
+            {
+                SetVelocityToRandom();
+                SetRotationToRandom();
+                started = true;
+            }
+        }
+    }
+
     private Vector2 GetRandomDirection()
     {
         float x = 0;
@@ -41,7 +62,9 @@ public class BallController : MonoBehaviour
     private void Reset()
     {
         transform.position = startPos;
-        SetVelocityToRandom();
+        myRigidbody.velocity = Vector3.zero;
+        myRigidbody.angularVelocity = 0;
+        started = false;
 
     }
 }
