@@ -1,27 +1,38 @@
-Art
-	Halloween theme (Black/orange)
-	Player imgs (???)
-	Spookier Get Ready To Play
+Get spooky font for Score
 
-Score improvement
-	Spooky font
-	Movement when score obtained
+Movement when score obtained
+	The side that gets the score will instantly inflate and slowly deflate?
 
-Main Menu
+Add Main Menu
 	Play
 	Quit
 	Instructions
 	Options (Change player buttons)
 
-Game Menu
+Add in-Game Menu
 	Open on esc
 	Continue
 	Options (Change player buttons)
 	Quit
 	Instructions
 
-Gameplay
-	Starting side (left, right) of ball should not be random 
+Starting side (left, right) of ball should not be random 
+	First player1, then player2. 
 
-Music
+Increase ball speed with every bounce
+
+Give friction between player and ball
+	Allows player to move quickly up/down to change the direction of ball
+
+Make ball velocity unaffected by friction/drag
+	Should still be able to change it through script.
+
+Add width increasing powerup
+Add player-speed increasing powerup
+Add powerup that increases the ball speed more with each bounce
+Add powerup that lets player shoot laser (will nudge ball if hit)
+Add powerup that slows other player down
+Add powerup that shrinks other player down
+
+Add basic Music
 	Spooky tunes
