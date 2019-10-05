@@ -3,12 +3,6 @@
 ☐ Movement when score obtained
 	The side that gets the score will instantly inflate and slowly deflate?
 
-☐ Add Main Menu @started(19-10-05 15:53)
-	Play
-	Quit
-	Instructions
-	Options (Change player buttons)
-
 ☐ Add in-Game Menu
 	Open on esc
 	Continue
@@ -34,5 +28,17 @@
 ☐ Add powerup that slows other player down
 ☐ Add powerup that shrinks other player down
 
-☐ Add basic Music
+☐ Add in-game Music
 	Spooky tunes
+
+☐ Add Main Menu @started(19-10-05 15:53)
+	✔ Play @done(19-10-05 16:12)
+	✔ Quit @done(19-10-05 16:12)
+	✘ Instructions @cancelled(19-10-05 16:09) // It's just gonna look silly 
+	☐ Options (Change player buttons) @started(19-10-05 17:05)
+	☐ Create spooky main menu background (and title)
+	☐ Create spooky buttons
+	☐ Add spooky main menu theme
+	☐ Add "Do you really want to exit?" when pressing Exit
+
+☐ Add system to store player settings
