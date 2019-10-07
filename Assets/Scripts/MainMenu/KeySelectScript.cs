@@ -8,6 +8,9 @@ public class KeySelectScript : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI text;
 
+    [SerializeField]
+    private GameObject pressAnyKeyText;
+
     private KeyCode myKeycode;
     private static bool anyKeyBeingChanged = false;
     private STATE state;
@@ -19,6 +22,7 @@ public class KeySelectScript : MonoBehaviour
 
     private void Start ()
     {
+        pressAnyKeyText.SetActive(false);
         SetText("W"); //TODO, get info from non-volatile storage
     }
 
@@ -38,12 +42,14 @@ public class KeySelectScript : MonoBehaviour
     {
         if (state == STATE.CHANGING)
         {
+            
             Event e = Event.current;
             if (e.isKey)
             {
                 myKeycode = e.keyCode;
-                SetText(myKeycode.ToString());
+                SetText(myKeycode.ToString().ToUpper());
                 state = STATE.NOT_BEING_CHANGED;
+                pressAnyKeyText.SetActive(false);
                 anyKeyBeingChanged = false;
             }
         }
@@ -55,6 +61,7 @@ public class KeySelectScript : MonoBehaviour
         {
             anyKeyBeingChanged = true;
             state = STATE.CHANGING;
+            pressAnyKeyText.SetActive(true);
         }
     }
 }
