@@ -35,7 +35,7 @@
 	✔ Play @done(19-10-05 16:12)
 	✔ Quit @done(19-10-05 16:12)
 	✘ Instructions @cancelled(19-10-05 16:09) // It's just gonna look silly 
-	☐ Options (Change player buttons) @started(19-10-05 17:05)
+	✔ Options (Change player buttons) @started(19-10-05 17:05) @done(19-10-07 20:22) @lasted(2d3h17m23s)
 	☐ Create spooky main menu background (and title)
 	☐ Create spooky buttons
 	☐ Add spooky main menu theme
