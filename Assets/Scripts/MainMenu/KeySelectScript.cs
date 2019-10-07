@@ -6,10 +6,10 @@ public class KeySelectScript : MonoBehaviour
 {
 
     [SerializeField]
-    private TextMeshProUGUI text;
+    private TextMeshProUGUI text = null;
 
     [SerializeField]
-    private GameObject pressAnyKeyText;
+    private GameObject pressAnyKeyText = null;
 
     private KeyCode myKeycode;
     private static bool anyKeyBeingChanged = false;

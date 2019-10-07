@@ -12,7 +12,7 @@ public class MainMenuButtonManager : MonoBehaviour
 
     public void OnOptionsButtonPressed()
     {
-        throw new NotImplementedException();
+        SceneManager.LoadScene(AvailableScenes.OPTIONS_MENU_SCENE);
     }
 
     public void OnExitButtonPressed()

@@ -6,4 +6,5 @@ public static class AvailableScenes
 {
     public const string MAIN_GAME_SCENE = "MainGameScene";
     public const string MAIN_MENU_SCENE = "MainMenuScene";
+    public const string OPTIONS_MENU_SCENE = "OptionsScene";
 }
