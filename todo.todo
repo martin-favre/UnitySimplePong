@@ -21,6 +21,8 @@
 ☐ Make ball velocity unaffected by friction/drag
 	Should still be able to change it through script.
 
+☐ Victory screen after a player reaches a certain score
+
 ☐ Add width increasing powerup
 ☐ Add player-speed increasing powerup
 ☐ Add powerup that increases the ball speed more with each bounce
@@ -35,10 +37,10 @@
 	✔ Play @done(19-10-05 16:12)
 	✔ Quit @done(19-10-05 16:12)
 	✘ Instructions @cancelled(19-10-05 16:09) // It's just gonna look silly 
-	☐ Options (Change player buttons) @started(19-10-05 17:05)
+	✔ Options (Change player buttons) @started(19-10-05 17:05) @done(19-10-13 21:27) @lasted(1w1d4h22m14s)
 	☐ Create spooky main menu background (and title)
 	☐ Create spooky buttons
 	☐ Add spooky main menu theme
 	☐ Add "Do you really want to exit?" when pressing Exit
 
-☐ Add system to store player settings
+☐ Add system to store player settings @started(19-10-13 21:27)
