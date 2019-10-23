@@ -1,7 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using TMPro;
 using UnityEngine;
+
+[Serializable]
+class KeySaveObject : SaveObj
+{
+    [SerializeField]
+    string keycode = "";
+    public KeySaveObject(string id, KeyCode keycode_) : base(id)
+    {
+        keycode = keycode_.ToString();
+    }
+
+    public override string GetJsonStr()
+    {
+        return JsonUtility.ToJson(this);
+    }
+
+    public KeyCode GetKeyCode()
+    {
+        return (KeyCode) System.Enum.Parse(typeof(KeyCode), keycode) ;
+    }
+}
+
 public class KeySelectScript : MonoBehaviour
 {
 
@@ -10,7 +31,7 @@ public class KeySelectScript : MonoBehaviour
 
     [SerializeField]
     private GameObject pressAnyKeyText = null;
-
+    
     private KeyCode myKeycode;
     private static bool anyKeyBeingChanged = false;
     private STATE state;
@@ -22,6 +43,12 @@ public class KeySelectScript : MonoBehaviour
 
     private void Start ()
     {
+        myKeycode = KeyCode.W;
+        KeySaveObject obj = SettingsSaverLoader.LoadObject<KeySaveObject>("someId");
+        Debug.Log(obj.GetKeyCode());
+        KeySaveObject saveObj = new KeySaveObject("someId", myKeycode);
+        SettingsSaverLoader.SaveObject(saveObj);
+        SettingsSaverLoader.PushToFile();
         pressAnyKeyText.SetActive(false);
         SetText("W"); //TODO, get info from non-volatile storage
     }

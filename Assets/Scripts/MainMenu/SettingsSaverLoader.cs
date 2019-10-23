@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using System;
+[Serializable]
 public abstract class SaveObj
 {
     public SaveObj(string id)
@@ -8,49 +9,68 @@ public abstract class SaveObj
         identifier = id;
     }
     public abstract string GetJsonStr();
-    public readonly string identifier;
+    [SerializeField]
+    string identifier;
+    public string GetIdentifier()
+    {
+        return identifier;
+    }
 }
 
 public class SettingsSaverLoader : MonoBehaviour
 {
-    readonly static string saveFile = Application.persistentDataPath + "Save.phat";
-
+    static List<string> readJsonObjects = new List<string>();
+    static List<string> jsonStrings = new List<string>();    
+    static string GetSaveFilePath()
+    {
+        return Application.persistentDataPath + "Save.phat";
+    }
     public static void SaveObject(SaveObj obj)
     {
-        string jsonstr = JsonUtility.ToJson(obj);
+        string jsonstr = obj.GetJsonStr();
+        Debug.Log("Saving object " + jsonstr);
         jsonStrings.Add(jsonstr);
     }
-    public static SaveObj LoadObject(string identifier)
+
+    // Will remove the object on loading, if successful
+    public static T LoadObject<T>(string identifier) where T : SaveObj
     {
-        foreach (SaveObj item in readJsonObjects)
+        foreach (string item in readJsonObjects)
         {
-            if(identifier == item.identifier)
+            T outItem = JsonUtility.FromJson<T>(item);
+            if(outItem != null && identifier == outItem.GetIdentifier())
             {
-                return item;
+                readJsonObjects.Remove(item);
+                return outItem;
             }
         }
-        return null;
+        Debug.LogWarning("Failed to load object with identifier: " + identifier);
+        return default(T);
     }
 
-    static List<SaveObj> readJsonObjects = new List<SaveObj>();
-    static List<string> jsonStrings = new List<string>();    
 
     public static void PushToFile()
     {
-        System.IO.File.WriteAllLines(saveFile, jsonStrings);
+        Debug.Log("Pushing all saves to " + GetSaveFilePath());
+        System.IO.File.WriteAllLines(GetSaveFilePath(), jsonStrings);
     }
 
     private void Awake() 
     {
-        if(System.IO.File.Exists(saveFile))
+        if(System.IO.File.Exists(GetSaveFilePath()))
         {
-            string[] inStr = System.IO.File.ReadAllLines(saveFile);
+            Debug.Log("Found save file " + GetSaveFilePath());
+            string[] inStr = System.IO.File.ReadAllLines(GetSaveFilePath());
             jsonStrings = new List<string>(inStr);
+            Debug.Log("Found " + jsonStrings.Count + " lines of savefile");
             foreach(string jsonStr in jsonStrings)
             {
-                SaveObj obj = JsonUtility.FromJson<SaveObj>(jsonStr);
-                readJsonObjects.Add(obj);
+                readJsonObjects.Add(jsonStr);
             }
+        }
+        else
+        {
+            Debug.Log("Did not find any save file");
         }
     }
 }
