@@ -614,6 +614,16 @@ PrefabInstance:
       propertyPath: pressAnyKeyText
       value: 
       objectReference: {fileID: 882750079}
+    - target: {fileID: 3567387113560634367, guid: 64bad3a5b2cdbc149ac6e817614ee802,
+        type: 3}
+      propertyPath: saveId
+      value: Player2UpKey
+      objectReference: {fileID: 0}
+    - target: {fileID: 3567387113560634367, guid: 64bad3a5b2cdbc149ac6e817614ee802,
+        type: 3}
+      propertyPath: initialKeyCode
+      value: 273
+      objectReference: {fileID: 0}
     - target: {fileID: 6744848179333351496, guid: 64bad3a5b2cdbc149ac6e817614ee802,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -689,6 +699,16 @@ PrefabInstance:
       propertyPath: pressAnyKeyText
       value: 
       objectReference: {fileID: 1734615882}
+    - target: {fileID: 9114122462219936360, guid: 64bad3a5b2cdbc149ac6e817614ee802,
+        type: 3}
+      propertyPath: saveId
+      value: Player2DownKey
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114122462219936360, guid: 64bad3a5b2cdbc149ac6e817614ee802,
+        type: 3}
+      propertyPath: initialKeyCode
+      value: 274
+      objectReference: {fileID: 0}
     - target: {fileID: 1324262885929228767, guid: 64bad3a5b2cdbc149ac6e817614ee802,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1098,6 +1118,11 @@ PrefabInstance:
       propertyPath: pressAnyKeyText
       value: 
       objectReference: {fileID: 264449142}
+    - target: {fileID: 3567387113560634367, guid: 64bad3a5b2cdbc149ac6e817614ee802,
+        type: 3}
+      propertyPath: saveId
+      value: Player1UpKey
+      objectReference: {fileID: 0}
     - target: {fileID: 6744848179333351496, guid: 64bad3a5b2cdbc149ac6e817614ee802,
         type: 3}
       propertyPath: m_enableAutoSizing
@@ -1123,6 +1148,16 @@ PrefabInstance:
       propertyPath: pressAnyKeyText
       value: 
       objectReference: {fileID: 1913109584}
+    - target: {fileID: 9114122462219936360, guid: 64bad3a5b2cdbc149ac6e817614ee802,
+        type: 3}
+      propertyPath: initialKeyCode
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114122462219936360, guid: 64bad3a5b2cdbc149ac6e817614ee802,
+        type: 3}
+      propertyPath: saveId
+      value: Player1DownKey
+      objectReference: {fileID: 0}
     - target: {fileID: 1324262885929228767, guid: 64bad3a5b2cdbc149ac6e817614ee802,
         type: 3}
       propertyPath: m_enableAutoSizing

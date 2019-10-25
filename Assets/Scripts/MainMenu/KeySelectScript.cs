@@ -17,6 +17,11 @@ class KeySaveObject : SaveObj
         return JsonUtility.ToJson(this);
     }
 
+    public override bool IsUnique()
+    {
+        return true;
+    }
+
     public KeyCode GetKeyCode()
     {
         return (KeyCode) System.Enum.Parse(typeof(KeyCode), keycode) ;
@@ -32,9 +37,15 @@ public class KeySelectScript : MonoBehaviour
     [SerializeField]
     private GameObject pressAnyKeyText = null;
     
+    [SerializeField]
+    private string saveId = "";
+
+    [SerializeField]
+    private KeyCode initialKeyCode = KeyCode.W;
+
     private KeyCode myKeycode;
     private static bool anyKeyBeingChanged = false;
-    private STATE state;
+    private STATE state = STATE.NOT_BEING_CHANGED;
     enum STATE
     {
         NOT_BEING_CHANGED,
@@ -43,14 +54,17 @@ public class KeySelectScript : MonoBehaviour
 
     private void Start ()
     {
-        myKeycode = KeyCode.W;
-        KeySaveObject obj = SettingsSaverLoader.LoadObject<KeySaveObject>("someId");
-        Debug.Log(obj.GetKeyCode());
-        KeySaveObject saveObj = new KeySaveObject("someId", myKeycode);
-        SettingsSaverLoader.SaveObject(saveObj);
-        SettingsSaverLoader.PushToFile();
+        KeySaveObject obj = SettingsSaverLoader.LoadObject<KeySaveObject>(saveId);
+        if(obj != null)
+        {
+            Debug.Log("Loaded keycode " + obj.GetKeyCode());
+            SetKey(obj.GetKeyCode());
+        }
+        else
+        {
+            SetKey(initialKeyCode);
+        }
         pressAnyKeyText.SetActive(false);
-        SetText("W"); //TODO, get info from non-volatile storage
     }
 
     void SetText(string newText)
@@ -73,13 +87,20 @@ public class KeySelectScript : MonoBehaviour
             Event e = Event.current;
             if (e.isKey)
             {
-                myKeycode = e.keyCode;
-                SetText(myKeycode.ToString().ToUpper());
+                SetKey(e.keyCode);
                 state = STATE.NOT_BEING_CHANGED;
                 pressAnyKeyText.SetActive(false);
                 anyKeyBeingChanged = false;
             }
         }
+    }
+
+    void SetKey(KeyCode k)
+    {
+        myKeycode = k;
+        SetText(myKeycode.ToString().ToUpper());
+        KeySaveObject save = new KeySaveObject(saveId, myKeycode);
+        SettingsSaverLoader.SaveObject(save);
     }
 
     public void OnKeyButtonPressed ()

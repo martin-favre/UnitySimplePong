@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class OptionsRetunButtonScript : MonoBehaviour
+public class ReturnToMainMenuButton : MonoBehaviour
 {
     public void OnReturnButtonPressed()
     {
